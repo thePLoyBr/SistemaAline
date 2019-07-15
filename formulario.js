@@ -2,9 +2,8 @@ function salvar(){
 
 $('#formulario').submit(function(){
 	event.preventDefault();
-})
 
-$.ajax({
+	$.ajax({
 
 		url: 'valida.php',
 		method: 'POST',
@@ -12,11 +11,20 @@ $.ajax({
 				'nome': $('#txtNome').val(),
 				'marca': $('#txtMarca').val(),
 				'metodo': $('#metodo').val()
-				}
+				},
+		dataType: 'html'
 	}).done(function(resposta){
-		$('#texto')	.text("DIV:   "+resposta)
-					.css("background", "#f66")
+		//Preenche Div Lista
+		$('#lista')	.html(resposta)
+
+		//Limpa Campos
+		$('#txtNome').val('')
+		$('#txtMarca').val('')
+		
 })
+})
+
+
 
 
 }

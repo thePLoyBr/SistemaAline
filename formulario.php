@@ -24,7 +24,7 @@
 			</fieldset>
 		</form>
 
-		<div id="texto"></div>
+		<div id="lista"></div>
 
 
 		<script type="text/javascript" src="formulario.js"></script>
