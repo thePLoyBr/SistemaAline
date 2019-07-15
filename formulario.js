@@ -1,17 +1,22 @@
+function salvar(){
 
-$('#formulario-ajax-form').submit(function(e){
-	e.preventDefaul();
-
-	$.ajax({
-		url: 'valida.php',
-		type: 'post',
-		dataType: 'html',
-		data: {
-			'nome': $('#txtNome').val(),
-			'marca': $('#txtMarca').val(),
-			'metodo':$('#metodo').val(),
-		}
-	}).done(function(data){
-		alert(data);
-	})
+$('#formulario').submit(function(){
+	event.preventDefault();
 })
+
+$.ajax({
+
+		url: 'valida.php',
+		method: 'POST',
+		data: {
+				'nome': $('#txtNome').val(),
+				'marca': $('#txtMarca').val(),
+				'metodo': $('#metodo').val()
+				}
+	}).done(function(resposta){
+		$('#texto')	.text("DIV:   "+resposta)
+					.css("background", "#f66")
+})
+
+
+}
