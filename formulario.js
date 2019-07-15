@@ -1,6 +1,7 @@
-function salvar(){
+$(document).ready(function(){
 
-$('#formulario').submit(function(){
+
+	$('#formulario').submit(function(){
 	event.preventDefault();
 
 	$.ajax({
@@ -23,8 +24,4 @@ $('#formulario').submit(function(){
 		
 })
 })
-
-
-
-
-}
+})

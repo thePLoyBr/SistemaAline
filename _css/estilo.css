@@ -1,0 +1,8 @@
+td{
+	text-align: center;
+	padding: 5px; 
+}
+
+#colunanome,#colunamarca,#colunadata{
+	width: 200px;
+}
