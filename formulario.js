@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
 	$('#formulario').submit(function(){
 	event.preventDefault();
 
@@ -21,7 +20,26 @@ $(document).ready(function(){
 		//Limpa Campos
 		$('#txtNome').val('')
 		$('#txtMarca').val('')
-		
 })
 })
+})
+
+$(document).ready(function () {
+
+    $.ajax({
+
+        url: 'valida.php',
+        method: 'POST',
+        data: {
+           'status': $('#status').val()
+        },
+        dataType: 'html'
+    }).done(function(resposta){
+
+        //Preenche Div Lista
+        $('#lista')	.html(resposta)
+		alert('passou do done')
+		//muda status
+		$('status').val('')
+	})
 })

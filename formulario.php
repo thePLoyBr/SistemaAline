@@ -10,10 +10,10 @@
 	</head>
 
 	<body>
-		
+
 		<form id="formulario">
 			<fieldset>
-				<legend>Cadastro</legend>
+				<legend>Cadastro</legend
 				
 				<p>
 					<label for="txtNome">Nome:</label>
@@ -32,7 +32,7 @@
 
 		<div id="lista"></div>
 
-
+        <input type="hidden" value="online" id="status">
 		
 	</body>
 </html>
