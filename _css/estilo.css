@@ -6,3 +6,7 @@ td{
 #colunanome,#colunamarca,#colunadata{
 	width: 200px;
 }
+
+form{
+    margin-bottom: 10pt;
+}

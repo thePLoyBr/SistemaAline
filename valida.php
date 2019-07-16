@@ -3,7 +3,6 @@
 
 include 'conexao.php';
 if (isset($_POST['status'])){
-    echo 'entrou no online';
     listarDados($conn);
 } else {
     $nome = $_POST['nome'];

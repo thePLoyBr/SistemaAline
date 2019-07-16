@@ -38,7 +38,6 @@ $(document).ready(function () {
 
         //Preenche Div Lista
         $('#lista')	.html(resposta)
-		alert('passou do done')
 		//muda status
 		$('status').val('')
 	})
