@@ -32,12 +32,13 @@ $(document).ready(function(){
 		if($('#check').is(':checked')){
 			alert('CHECADO')
 		}	
+
+		//TODO pegar esse id do checked e enviar para PHP
 		
 		enviarDados()
 	})
 
 	$('#btn_cadastrar').click(function(){
-		alert('boot')
 		$('#metodo').val('cadastrar')
 		enviarDados()
 	})
