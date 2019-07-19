@@ -30,10 +30,10 @@ $(document).ready(function(){
 		$('#metodo').val('excluir')	
 				
 		
-		/* 
-		if($('#check').is(':checked')){
-			alert($('#colunaid').text())
-		}	 */
+		
+		if($('.check').is(':checked')){
+			alert($('.colunaid').text())
+		}
 
 		//TODO pegar esse id do checked e enviar para PHP
 		

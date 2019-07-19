@@ -3,6 +3,13 @@ td{
 	padding: 5px; 
 }
 
+th{
+	text-align: center;
+	padding: 5px; 
+}
+
+
+
 #colunanome,#colunamarca,#colunadata{
 	width: 200px;
 }

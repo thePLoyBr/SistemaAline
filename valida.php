@@ -21,13 +21,14 @@ if (isset($_POST['status'])){
 function listarDados($conn){
 	$query = mysqli_query($conn, "SELECT * FROM tb_esmalte");
 
+    echo("<table border='1'> <th>Selecionar</th> <th>ID</th> <th>Nome</th> <th>Marca</th> <th>Data</th>");
 	while ($dados = mysqli_fetch_assoc($query)) {
-        echo"<table border='1'><tr> <td><input type='checkbox' id='check'></td>
-                                    <td id='colunaid'>{$dados['id_esmalte']}</td>
-                                    <td id='colunanome'>{$dados['nome_esmalte']}</td>
-                                    <td id='colunamarca'>{$dados['marca_esmalte']}</td>
-                                    <td id='colunadata'>{$dados['dt_entrada']}</td>
-                                </tr></table>";
-
-	}
+        echo"                   <tr><td><input type='checkbox' class='check'></td>
+                                    <td class='colunaid'>   {$dados['id_esmalte']}      </td>
+                                    <td id='colunanome'>    {$dados['nome_esmalte']}    </td>
+                                    <td id='colunamarca'>   {$dados['marca_esmalte']}   </td>
+                                    <td id='colunadata'>    {$dados['dt_entrada']}      </td>
+                                </tr>";
+    }
+    echo ("</table>");
 }
