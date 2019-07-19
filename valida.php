@@ -23,7 +23,7 @@ function listarDados($conn){
 
 	while ($dados = mysqli_fetch_assoc($query)) {
         echo"<table border='1'><tr> <td><input type='checkbox' id='check'></td>
-                                    <td id=colunaid>{$dados['id_esmalte']}</td>
+                                    <td id='colunaid'>{$dados['id_esmalte']}</td>
                                     <td id='colunanome'>{$dados['nome_esmalte']}</td>
                                     <td id='colunamarca'>{$dados['marca_esmalte']}</td>
                                     <td id='colunadata'>{$dados['dt_entrada']}</td>

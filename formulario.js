@@ -28,10 +28,12 @@ $(document).ready(function(){
 	
 	$('#btn_excluir').click(function(){
 		$('#metodo').val('excluir')	
-
+				
+		
+		/* 
 		if($('#check').is(':checked')){
-			alert('CHECADO')
-		}	
+			alert($('#colunaid').text())
+		}	 */
 
 		//TODO pegar esse id do checked e enviar para PHP
 		
