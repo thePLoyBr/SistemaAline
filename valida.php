@@ -5,15 +5,23 @@ include 'conexao.php';
 if (isset($_POST['status'])){
     listarDados($conn);
 } else {
-    $nome = $_POST['nome'];
-    $marca = $_POST['marca'];
     $metodo = $_POST['metodo'];
     
     if ($metodo == 'cadastrar') {
+        $nome   = $_POST['nome'];
+        $marca  = $_POST['marca'];
         $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada) VALUES ('$nome','$marca',NOW())");
         listarDados($conn);
     } elseif ($metodo == 'excluir'){
-        echo ('vc entrou no excluir');
+        $id     = $_POST['id'];
+        $sql = mysqli_query($conn,"DELETE FROM tb_esmalte WHERE id_esmalte=$id");
+        listarDados($conn);
+    } elseif($metodo == 'alterar'){
+        $id     = $_POST['id'];
+        $nome   = $_POST['nome'];
+        $marca  = $_POST['marca'];
+        $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca' WHERE id_esmalte=$id");
+        listarDados($conn);
     }
 }
 

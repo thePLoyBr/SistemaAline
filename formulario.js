@@ -9,7 +9,7 @@ function enviarDados(){
 			data: {
 					'nome': $('#txtNome').val(),
 					'marca': $('#txtMarca').val(),
-					'metodo': $('#metodo').val()
+					'metodo': $('#metodo').val(),
 					},
 			dataType: 'html'
 		}).done(function(resposta){
@@ -43,17 +43,50 @@ $(document).ready(function(){
 		});
 
 		$("#btn_excluir").click(function(){
-			alert("entrou no botao");
-			$('#metodo').val('excluir');			
-			//enviarDados()
+			$('#metodo').val('excluir');
 
 
 			if($('.check').is(':checked')){
-
 				var result = $('input:checked').val();
+				$.ajax({
+					url: 'valida.php',
+					method: 'POST',
+					data: {
+							'id': $('input:checked').val(),
+							'metodo': $('#metodo').val(),
+							},
+					dataType: 'html'
+				}).done(function(resposta){
+					$('#lista').html(resposta);
+				});
+			} else {
+				alert('Marque um produto para excluir');
+			}
+			
+		});
 
 
-				alert(result)
+		$("#btn_alterar").click(function(){
+			$('#metodo').val('alterar');
+
+
+			if($('.check').is(':checked')){
+				var result = $('input:checked').val();
+				$.ajax({
+					url: 'valida.php',
+					method: 'POST',
+					data: {
+							'id': $('input:checked').val(),
+							'nome': $('#txtNome').val(),
+							'marca': $('#txtMarca').val(),
+							'metodo': $('#metodo').val()
+							},
+					dataType: 'html'
+				}).done(function(resposta){
+					$('#lista').html(resposta);
+				});
+			} else {
+				alert('Marque um produto para alterar');
 			}
 			
 		});
