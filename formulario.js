@@ -14,56 +14,52 @@ function enviarDados(){
 			dataType: 'html'
 		}).done(function(resposta){
 			//Preenche Div Lista
-			$('#lista')	.html(resposta)
+			$('#lista')	.html(resposta);
 
 			//Limpa Campos
-			$('#txtNome').val('')
-			$('#txtMarca').val('')
-		})
-	})
+			$('#txtNome').val('');
+			$('#txtMarca').val('');
+		});
+	});
 }
 
 
 $(document).ready(function(){
-	
-	$('#btn_excluir').click(function(){
-		$('#metodo').val('excluir')	
-				
-		
-		
-		if($('.check').is(':checked')){
-			alert($('.colunaid').text())
-		}
 
-		//TODO pegar esse id do checked e enviar para PHP
-		
-		enviarDados()
-	})
+		$.ajax({
+
+			url: 'valida.php',
+			method: 'POST',
+			data: {
+			   'status': $('#status').val()
+			},
+			dataType: 'html'
+		}).done(function(resposta){
+	
+			//Preenche Div Lista
+			$('#lista')	.html(resposta);
+			//muda status
+			$('status').val('');
+		});
+
+		$("#btn_excluir").click(function(){
+			alert("entrou no botao");
+			$('#metodo').val('excluir');			
+			//enviarDados()
+
+
+			if($('.check').is(':checked')){
+
+				var result = $('input:checked').val();
+
+
+				alert(result)
+			}
+			
+		});
 
 	$('#btn_cadastrar').click(function(){
-		$('#metodo').val('cadastrar')
-		enviarDados()
-	})
-
-
-})
-
-
-$(document).ready(function () {
-
-    $.ajax({
-
-        url: 'valida.php',
-        method: 'POST',
-        data: {
-           'status': $('#status').val()
-        },
-        dataType: 'html'
-    }).done(function(resposta){
-
-        //Preenche Div Lista
-        $('#lista')	.html(resposta)
-		//muda status
-		$('status').val('')
-	})
-})
+		$('#metodo').val('cadastrar');
+		enviarDados();
+	});
+});

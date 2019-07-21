@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" type="text/css" href="_css/estilo.css">
-	<link rel="stylesheet" type="text/css" href="_css/bootstrap.css">
-		
-	
-	
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="_css/estilo.css">
+		<link rel="stylesheet" type="text/css" href="_css/bootstrap.css">
+		<script src="_js/jquery-3.4.1.min.js"></script>
+		<script src="_js/bootstrap.js"></script>
+		<script type="text/javascript" src="formulario.js"></script>
 	</head>
 
 	<body>
 
 		<div class="container-fluid">
-
-
-				<nav class="navbar navbar-light bg-light navbar-inverse">
-						<form class="form-inline">
-								<button class="btn btn-outline-success" type="button">Cadastrar</button>
-								<button class="btn btn-outline-success" type="button">Alterar</button>
-								<button class="btn btn-outline-success" type="button">Excluir</button>
-
-						  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-						  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-
-						</form>
-					  </nav>
-
+			<nav class="navbar navbar-light bg-light navbar-inverse">
+					<form class="form-inline">
+						<button class="btn btn-outline-success" type="button">Cadastrar</button>
+						<button class="btn btn-outline-success" type="button">Alterar</button>
+						<button class="btn btn-outline-success" type="button">Excluir</button>
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					  	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>
+			</nav>
 		</div>
 
 		<form id="formulario">
@@ -44,7 +39,6 @@
 				</p>
 				
 				<input type="hidden" id="metodo" value="">
-				
 				<input type="submit" id="btn_cadastrar" value="Cadastrar">
 				<input type="submit" id="btn_excluir" value="Excluir">
 			</fieldset>
@@ -54,9 +48,7 @@
 
         <input type="hidden" value="online" id="status">
 	
-		<script src="_js/jquery-3.4.1.min.js"></script>
-		<script src="_js/bootstrap.js"></script>
-		<script type="text/javascript" src="formulario.js"></script>
+		
 		
 	</body>
 </html>
