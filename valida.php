@@ -34,9 +34,9 @@ function listarDados($conn){
         echo"   <tr>
                     <td><input type='checkbox' value='{$dados['id_esmalte']}' class='check'></td>
                     <td>                              {$dados['id_esmalte']}      </td>
-                    <td id='colunanome'>              {$dados['nome_esmalte']}    </td>
-                    <td id='colunamarca'>             {$dados['marca_esmalte']}   </td>
-                    <td id='colunadata'>              {$dados['dt_entrada']}      </td>
+                    <td>                              {$dados['nome_esmalte']}    </td>
+                    <td>                              {$dados['marca_esmalte']}   </td>
+                    <td>                              {$dados['dt_entrada']}      </td>
                 </tr>";
     }
     echo ("</table>");
