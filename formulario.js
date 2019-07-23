@@ -70,7 +70,7 @@ $(document).ready(function(){
 			$('#metodo').val('alterar');
 
 
-			if($('.check').is(':checked')){
+			if($('.check').is(':checked') && $('#txtNome').val() != ''){
 				var result = $('input:checked').val();
 				$.ajax({
 					url: 'valida.php',
