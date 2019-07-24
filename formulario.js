@@ -9,7 +9,9 @@ function enviarDados() {
 			data: {
 				'nome': $('#txtNome').val(),
 				'marca': $('#txtMarca').val(),
-				'metodo': $('#metodo').val(),
+				'imagem':$('#imagem').val(),
+				'metodo': $('#metodo').val()
+
 			},
 			dataType: 'html'
 		}).done(function (resposta) {
@@ -72,15 +74,15 @@ $(document).ready(function () {
 		$('#metodo').val('alterar');
 
 
-		if ($('.check').is(':checked') && $('#txtNome').val() != '') {
+		if ($('.check').is(':checked') && $('#txtNomeAlt').val() != '') {
 			var result = $('input:checked').val();
 			$.ajax({
 				url: 'valida.php',
 				method: 'POST',
 				data: {
 					'id': $('input:checked').val(),
-					'nome': $('#txtNome').val(),
-					'marca': $('#txtMarca').val(),
+					'nome': $('#txtNomeAlt').val(),
+					'marca': $('#txtMarcaAlt').val(),
 					'metodo': $('#metodo').val()
 				},
 				dataType: 'html'
@@ -98,8 +100,10 @@ $(document).ready(function () {
 		enviarDados();
 	});
 
-	$('#botao').click(function () {
-		alert("TESTE");
+	$('#btnChamaModalAlterar').click(function () {
+		if (!$('.check').is(':checked')){
+			alert('nao selecionado')
+		}
 	});
 
 

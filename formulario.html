@@ -9,90 +9,71 @@
 	<script src="_js/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="_js/bootstrap.js"></script>
 	<script src="formulario.js" type="text/javascript"></script>
+	<script src="https://kit.fontawesome.com/628644ce95.js"></script>
 </head>
 
 <body>
 
-	<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalCadastro">Cadastrar</button>
-	<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalAlterar" id="btnChamaModalAlterar" type="submit">Alterar</button>
-	<button class="btn btn-outline-success" type="button" id="btn_excluir">Excluir</button>
-	<button class="btn btn-outline-success" type="button" id="botao">Botao</button>
-	<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+	<div class="container-fluid text-center">
+		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalCadastro">
+		<i class="fas fa-database"></i>Cadastrar</button>
+		
+		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalAlterar"	id="btnChamaModalAlterar" type="submit">Alterar</button>
+		
+		<button class="btn btn-outline-success" type="button" id="btn_excluir">Excluir</button>
+		
+		<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 
-	<!-- Modals-->
-	<div class="modal" id="modalCadastro" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title"> Cadastrar </h5>
-					<button type="button" class="close" data-dismiss="modal">
-						<span>X</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<form id="formulario">
-						<p>
-							<label for="txtNome">Nome:</label>
-							<input type="text" id="txtNome" required>
-						</p>
-
-						<p>
-							<input type="file" />
-
-						</p>
-
-						<p>
-							<label for="txtMarca">Marca:</label>
-							<input type="text" id="txtMarca" required>
-						</p>
-
-						<input type="hidden" id="metodo" value="">
-						<button class="btn btn-outline-success" type="submit" id="btn_cadastrar" value="Cadastrar">Cadastrar</button>
-					</form>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="modal" id="modalAlterar" tabindex="-1" role="dialog">
+		<!-- Modals-->
+		<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title"> Alterar </h5>
+						<h5 class="modal-title"> Cadastrar </h5>
 						<button type="button" class="close" data-dismiss="modal">
-							<span>X</span>
+							<span>&times;</span>
 						</button>
 					</div>
-	
+
 					<div class="modal-body">
-						<form id="formulario">
-							<p>
-								<label for="txtNome">Nome:</label>
-								<input type="text" id="txtNome" required>
-							</p>
-	
-							<p>
-								<input type="file" />
-	
-							</p>
-	
-							<p>
-								<label for="txtMarca">Marca:</label>
-								<input type="text" id="txtMarca" required>
-							</p>
-	
-							<input type="hidden" id="metodo" value="">
-							<button class="btn btn-outline-success" type="submit" id="btn_alterar" value="Alterar">Alterar</button>
-						</form>
+
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-6">
+									<form id="formulario" enctype="multipart/form-data" method="POST">
+										<p>
+											<label for="txtNome">Nome:</label>
+											<input type="text" id="txtNome" required>
+										</p>
+
+
+
+										<p>
+											<label for="txtMarca">Marca:</label>
+											<input type="text" id="txtMarca" required>
+										</p>
+
+										<input type="hidden" id="metodo" value="">
+										<button class="btn btn-outline-success" type="submit" id="btn_cadastrar"
+											value="Cadastrar">Cadastrar</button>
+
+								</div>
+
+								<div class="col-6">
+									<p>
+										<input type="file" id="imagem" />
+
+									</p>
+									</form>
+								</div>
+
+							</div>
+						</div>
+
+
 					</div>
-	
+
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 					</div>
@@ -100,35 +81,69 @@
 			</div>
 		</div>
 
-	<!--
-		<form id="formulario">
-			<fieldset>
-				<legend>Cadastro</legend>
-				
-				<p>
-					<label for="txtNome">Nome:</label>
-					<input type="text" id="txtNome" required>
-					<input type="file"/>
-				</p>
-				
-				<p>
-					<label for="txtMarca">Marca:</label>
-					<input type="text" id="txtMarca" required>
-				</p>
-				
-				<input type="hidden" id="metodo" value="">
-				<input type="submit" id="btn_cadastrar" value="Cadastrar">
-				<input type="submit" id="btn_alterar" value="Alterar">
-				<input type="submit" id="btn_excluir" value="Excluir">
-			</fieldset>
-		</form>
-		-->
-	<div id="lista"></div>
+		<div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title"> Alterar </h5>
+						<button type="button" class="close" data-dismiss="modal">
+							<span>&times;</span>
+						</button>
+					</div>
 
+					<div class="modal-body">
+
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-6">
+									<form id="formulario" enctype="multipart/form-data">
+										<p>
+											<label for="txtNome">Nome:</label>
+											<input type="text" id="txtNomeAlt" required>
+										</p>
+
+
+
+										<p>
+											<label for="txtMarca">Marca:</label>
+											<input type="text" id="txtMarcaAlt" required>
+										</p>
+
+										<input type="hidden" id="metodo" value="">
+										<button class="btn btn-outline-success" type="submit" id="btn_alterar"
+											value="Alterar">Alterar</button>
+
+								</div>
+
+								<div class="col-6">
+									<p>
+										<input type="file" id="imagem">
+									</p>
+									</form>
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="d-flex p-2">
+			<div id="lista" class="table table-lg table-responsive table-bordered table-hover text-center d-flex p-2 justify-content-center"></div>
+		</div>
+	</div>
 	<input type="hidden" value="online" id="status">
 
 
 
+	<div class="jumbotron col-sm-12 text-center">teste</div>
 </body>
 
 </html>

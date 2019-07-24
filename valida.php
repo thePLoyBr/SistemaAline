@@ -10,7 +10,8 @@ if (isset($_POST['status'])){
     if ($metodo == 'cadastrar') {
         $nome   = $_POST['nome'];
         $marca  = $_POST['marca'];
-        $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada) VALUES ('$nome','$marca',NOW())");
+        $imagem = $_FILES['imagem'];
+        $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada,foto_esmalte) VALUES ('$nome','$marca',NOW(),'$imagem')");
         listarDados($conn);
     } elseif ($metodo == 'excluir'){
         $id     = $_POST['id'];
@@ -29,7 +30,7 @@ if (isset($_POST['status'])){
 function listarDados($conn){
 	$query = mysqli_query($conn, "SELECT * FROM tb_esmalte");
 
-    echo("<table border='1'> <th>Selecionar</th> <th>ID</th> <th>Nome</th> <th>Marca</th> <th>Data</th>");
+    echo("<table border='1'> <th>Selecionar</th> <th>ID</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th>");
 	while ($dados = mysqli_fetch_assoc($query)) {
         echo"   <tr>
                     <td><input type='checkbox' value='{$dados['id_esmalte']}' class='check'></td>
@@ -37,6 +38,7 @@ function listarDados($conn){
                     <td>                              {$dados['nome_esmalte']}    </td>
                     <td>                              {$dados['marca_esmalte']}   </td>
                     <td>                              {$dados['dt_entrada']}      </td>
+                    <td>                              {$dados['foto_esmalte']}    </td>
                 </tr>";
     }
     echo ("</table>");
