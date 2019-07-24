@@ -1,5 +1,5 @@
-function enviarDados(){
-	$('#formulario').submit(function(){
+function enviarDados() {
+	$('#formulario').submit(function () {
 		event.preventDefault();
 
 		$.ajax({
@@ -7,14 +7,14 @@ function enviarDados(){
 			url: 'valida.php',
 			method: 'POST',
 			data: {
-					'nome': $('#txtNome').val(),
-					'marca': $('#txtMarca').val(),
-					'metodo': $('#metodo').val(),
-					},
+				'nome': $('#txtNome').val(),
+				'marca': $('#txtMarca').val(),
+				'metodo': $('#metodo').val(),
+			},
 			dataType: 'html'
-		}).done(function(resposta){
+		}).done(function (resposta) {
 			//Preenche Div Lista
-			$('#lista')	.html(resposta);
+			$('#lista').html(resposta);
 
 			//Limpa Campos
 			$('#txtNome').val('');
@@ -24,76 +24,89 @@ function enviarDados(){
 	});
 }
 
-
-$(document).ready(function(){
-
-		$.ajax({
-
-			url: 'valida.php',
-			method: 'POST',
-			data: {
-			   'status': $('#status').val()
-			},
-			dataType: 'html'
-		}).done(function(resposta){
-
-			//Preenche Div Lista
-			$('#lista')	.html(resposta);
-			//muda status
-			$('status').val('');
-		});
-
-		$("#btn_excluir").click(function(){
-			$('#metodo').val('excluir');
+$(document).ready(function () {
 
 
-			if($('.check').is(':checked')){
-				var result = $('input:checked').val();
-				$.ajax({
-					url: 'valida.php',
-					method: 'POST',
-					data: {
-							'id': $('input:checked').val(),
-							'metodo': $('#metodo').val(),
-							},
-					dataType: 'html'
-				}).done(function(resposta){
-					$('#lista').html(resposta);
-				});
-			} else {
-				alert('Marque um produto para excluir');
-			}
 
-		});
+	$.ajax({
 
+		url: 'valida.php',
+		method: 'POST',
+		data: {
+			'status': $('#status').val()
+		},
+		dataType: 'html'
+	}).done(function (resposta) {
 
-		$("#btn_alterar").click(function(){
-			$('#metodo').val('alterar');
+		//Preenche Div Lista
+		$('#lista').html(resposta);
+		//muda status
+		$('status').val('');
+	});
+
+	$("#btn_excluir").click(function () {
+		$('#metodo').val('excluir');
 
 
-			if($('.check').is(':checked') && $('#txtNome').val() != ''){
-				var result = $('input:checked').val();
-				$.ajax({
-					url: 'valida.php',
-					method: 'POST',
-					data: {
-							'id': $('input:checked').val(),
-							'nome': $('#txtNome').val(),
-							'marca': $('#txtMarca').val(),
-							'metodo': $('#metodo').val()
-							},
-					dataType: 'html'
-				}).done(function(resposta){
-					$('#lista').html(resposta);
-				});
-			} else {
-				alert('Marque um produto para alterar');
-			}
+		if ($('.check').is(':checked')) {
+			var result = $('input:checked').val();
+			$.ajax({
+				url: 'valida.php',
+				method: 'POST',
+				data: {
+					'id': $('input:checked').val(),
+					'metodo': $('#metodo').val(),
+				},
+				dataType: 'html'
+			}).done(function (resposta) {
+				$('#lista').html(resposta);
+			});
+		} else {
+			alert('Marque um produto para excluir');
+		}
 
-		});
+	});
 
-	$('#btn_cadastrar').click(function(){
+
+	$("#btn_alterar").click(function () {
+		$('#metodo').val('alterar');
+
+
+		if ($('.check').is(':checked') && $('#txtNome').val() != '') {
+			var result = $('input:checked').val();
+			$.ajax({
+				url: 'valida.php',
+				method: 'POST',
+				data: {
+					'id': $('input:checked').val(),
+					'nome': $('#txtNome').val(),
+					'marca': $('#txtMarca').val(),
+					'metodo': $('#metodo').val()
+				},
+				dataType: 'html'
+			}).done(function (resposta) {
+				$('#lista').html(resposta);
+			});
+		} else {
+			alert('Marque um produto para alterar');
+		}
+
+	});
+
+	$('#btn_cadastrar').click(function () {
 		$('#metodo').val('cadastrar');
 		enviarDados();
 	});
+
+	$('#botao').click(function () {
+		alert("TESTE");
+	});
+
+
 });
+
+
+
+
+
+
