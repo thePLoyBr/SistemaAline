@@ -14,16 +14,50 @@
 
 		<div class="container-fluid">
 			<nav class="navbar navbar-light bg-light navbar-inverse">
-					<form class="form-inline">
-						<button class="btn btn-outline-success" type="button">Cadastrar</button>
-						<button class="btn btn-outline-success" type="button">Alterar</button>
-						<button class="btn btn-outline-success" type="button">Excluir</button>
-						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					  	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-					</form>
+					
 			</nav>
 		</div>
 
+		<form class="form-inline" id="formulario">
+			<button class="btn btn-outline-success" type="submit" id="btn_cadastrar" value="Cadastrar">Cadastrar</button>
+			<button class="btn btn-outline-success" type="button">Alterar</button>
+			<button class="btn btn-outline-success" type="button">Excluir</button>
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			  <p>
+				<label for="txtNome">Nome:</label>
+				<input type="text" id="txtNome" required>
+				<input type="file"/>
+			</p>
+			
+			<p>
+				<label for="txtMarca">Marca:</label>
+				<input type="text" id="txtMarca" required>
+			</p>
+		
+			<input type="hidden" id="metodo" value="">
+			<div class="modal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title">Título do modal</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+					  <p>Texto do corpo do modal, é aqui.</p>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+					  <button type="button" class="btn btn-primary">Salvar mudanças</button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</form>
+
+		<!--
 		<form id="formulario">
 			<fieldset>
 				<legend>Cadastro</legend>
@@ -45,7 +79,7 @@
 				<input type="submit" id="btn_excluir" value="Excluir">
 			</fieldset>
 		</form>
-
+		-->
 		<div id="lista"></div>
 
         <input type="hidden" value="online" id="status">

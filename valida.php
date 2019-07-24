@@ -6,7 +6,7 @@ if (isset($_POST['status'])){
     listarDados($conn);
 } else {
     $metodo = $_POST['metodo'];
-    
+
     if ($metodo == 'cadastrar') {
         $nome   = $_POST['nome'];
         $marca  = $_POST['marca'];
@@ -40,4 +40,5 @@ function listarDados($conn){
                 </tr>";
     }
     echo ("</table>");
+    mysqli_close($conn);
 }

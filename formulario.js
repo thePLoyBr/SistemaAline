@@ -19,6 +19,7 @@ function enviarDados(){
 			//Limpa Campos
 			$('#txtNome').val('');
 			$('#txtMarca').val('');
+
 		});
 	});
 }
@@ -35,7 +36,7 @@ $(document).ready(function(){
 			},
 			dataType: 'html'
 		}).done(function(resposta){
-	
+
 			//Preenche Div Lista
 			$('#lista')	.html(resposta);
 			//muda status
@@ -62,7 +63,7 @@ $(document).ready(function(){
 			} else {
 				alert('Marque um produto para excluir');
 			}
-			
+
 		});
 
 
@@ -88,7 +89,7 @@ $(document).ready(function(){
 			} else {
 				alert('Marque um produto para alterar');
 			}
-			
+
 		});
 
 	$('#btn_cadastrar').click(function(){
