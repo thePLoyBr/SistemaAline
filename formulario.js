@@ -44,6 +44,7 @@ $(document).ready(function () {
 
 	$("#btn_alterar").click(function () {
 		$('#metodo').val('alterar');
+		
 		var form = $('form')[1];
 		var formulario = new FormData(form);
 		
