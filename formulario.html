@@ -22,8 +22,6 @@
 		
 		<button class="btn btn-outline-success" type="button" id="btn_excluir">Excluir</button>
 		
-		<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 
 		<!-- Modals-->
 		<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog">
@@ -41,20 +39,20 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
-									<form id="formulario" enctype="multipart/form-data" method="POST">
+									<form id="formulario" enctype="multipart/form-data" multiple name="arquivo">
 										<p>
 											<label for="txtNome">Nome:</label>
-											<input type="text" id="txtNome" required>
+											<input type="text" name="nome" required>
 										</p>
 
 
 
 										<p>
 											<label for="txtMarca">Marca:</label>
-											<input type="text" id="txtMarca" required>
+											<input type="text" name="marca" id="marca" required>
 										</p>
 
-										<input type="hidden" id="metodo" value="">
+										<input type="hidden" name="metodo" id="metodo" value="">
 										<button class="btn btn-outline-success" type="submit" id="btn_cadastrar"
 											value="Cadastrar">Cadastrar</button>
 
@@ -62,7 +60,7 @@
 
 								<div class="col-6">
 									<p>
-										<input type="file" id="imagem" />
+										<input type="file" name="imagem" />
 
 									</p>
 									</form>
@@ -96,20 +94,20 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
-									<form id="formulario" enctype="multipart/form-data">
+									<form id="formularioAlterar" enctype="multipart/form-data" name="arquivo" multiple>
 										<p>
 											<label for="txtNome">Nome:</label>
-											<input type="text" id="txtNomeAlt" required>
+											<input type="text" name="nome" id="nomeAlt" required>
 										</p>
 
 
 
 										<p>
 											<label for="txtMarca">Marca:</label>
-											<input type="text" id="txtMarcaAlt" required>
+											<input type="text" name="marca" required>
 										</p>
 
-										<input type="hidden" id="metodo" value="">
+										<input type="hidden" name="metodo" value="">
 										<button class="btn btn-outline-success" type="submit" id="btn_alterar"
 											value="Alterar">Alterar</button>
 
@@ -117,7 +115,7 @@
 
 								<div class="col-6">
 									<p>
-										<input type="file" id="imagem">
+										<input type="file" name="imagem">
 									</p>
 									</form>
 								</div>

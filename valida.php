@@ -5,23 +5,63 @@ include 'conexao.php';
 if (isset($_POST['status'])){
     listarDados($conn);
 } else {
-    $metodo = $_POST['metodo'];
+    $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : null;
+    
 
     if ($metodo == 'cadastrar') {
-        $nome   = $_POST['nome'];
-        $marca  = $_POST['marca'];
-        $imagem = $_FILES['imagem'];
-        $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada,foto_esmalte) VALUES ('$nome','$marca',NOW(),'$imagem')");
+        $nome   = isset ( $_POST['nome'] ) ? $_POST['nome'] : " Nenhum Nome ";
+        $marca  = isset ( $_POST['marca'] ) ? $_POST['marca'] : " Nenhuma Marca ";
+        $arquivo = isset ( $_FILES['imagem'] ) ? $_FILES['imagem'] : " Nenhuma Imagem ";
+        
+        if ( isset( $_FILES['imagem'] ) ){
+            $nomeImagem = $arquivo['name'];
+            $tiposPermitidos = ['jpg' , 'jpeg' , 'png' , 'bmp'];
+            $tamanho = $arquivo['size'];
+            $extensao = explode('.' , $nomeImagem);
+            $extensao = end($extensao);
+            $novoNome = rand() . "- $nomeImagem";
+            if(in_array($extensao, $tiposPermitidos) ) {
+                if($tamanho > 1e+6) {
+                    echo('Arquivo muito grande: Tamanho máximo: 1MB');
+                } else{
+                    $mover = move_uploaded_file($_FILES['imagem']['tmp_name'], '_imagens/' . $novoNome);
+                }
+            }else {
+                echo('Tipo de arquivo não permitido');
+            }
+        }
+        
+        $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada,foto_esmalte) VALUES ('$nome','$marca',NOW(),'$novoNome')");
         listarDados($conn);
     } elseif ($metodo == 'excluir'){
-        $id     = $_POST['id'];
+        $id     = isset ( $_POST['id'] ) ? $_POST['id'] : " Nenhum ID ";
         $sql = mysqli_query($conn,"DELETE FROM tb_esmalte WHERE id_esmalte=$id");
         listarDados($conn);
     } elseif($metodo == 'alterar'){
-        $id     = $_POST['id'];
-        $nome   = $_POST['nome'];
-        $marca  = $_POST['marca'];
-        $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca' WHERE id_esmalte=$id");
+        $id     = isset ( $_POST['id'] ) ? $_POST['id'] : " Nenhum ID ";
+        $nome   = isset ( $_POST['nome'] ) ? $_POST['nome'] : " Nenhum Nome ";
+        $marca  = isset ( $_POST['marca'] ) ? $_POST['marca'] : " Nenhuma Marca ";
+        $arquivo = isset ( $_FILES['imagem'] ) ? $_FILES['imagem'] : " Nenhuma Imagem ";
+        
+        if ( isset( $_FILES['imagem'] ) ){
+            $nomeImagem = $arquivo['name'];
+            $tiposPermitidos = ['jpg' , 'jpeg' , 'png' , 'bmp'];
+            $tamanho = $arquivo['size'];
+            $extensao = explode('.' , $nomeImagem);
+            $extensao = end($extensao);
+            $novoNome = rand() . "- $nomeImagem";
+            if(in_array($extensao, $tiposPermitidos) ) {
+                if($tamanho > 1e+6) {
+                    echo('Arquivo muito grande: Tamanho máximo: 1MB');
+                } else{
+                    $mover = move_uploaded_file($_FILES['imagem']['tmp_name'], '_imagens/' . $novoNome);
+                }
+            }else {
+                echo('Tipo de arquivo não permitido');
+            }
+        }
+
+        $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='$novoNome' WHERE id_esmalte=$id");
         listarDados($conn);
     }
 }
@@ -38,7 +78,8 @@ function listarDados($conn){
                     <td>                              {$dados['nome_esmalte']}    </td>
                     <td>                              {$dados['marca_esmalte']}   </td>
                     <td>                              {$dados['dt_entrada']}      </td>
-                    <td>                              {$dados['foto_esmalte']}    </td>
+                    <td>                              <img src='_imagens/{$dados['foto_esmalte']}' width='100px'/>      </td>
+                                  
                 </tr>";
     }
     echo ("</table>");
