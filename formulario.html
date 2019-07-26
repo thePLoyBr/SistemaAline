@@ -16,7 +16,9 @@
 
 	<div class="container-fluid text-center">
 		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalCadastro">
-		<i class="fas fa-database"></i>Cadastrar</button>
+			<i class="fab fa-accessible-icon"></i>
+
+			Cadastrar</button>
 		
 		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalAlterar"	id="btnChamaModalAlterar" type="submit">Alterar</button>
 		
@@ -94,17 +96,17 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
-									<form id="formularioAlterar" enctype="multipart/form-data" name="arquivo" multiple>
+									<form id="formularioAlterar" enctype="multipart/form-data" name="arquivoAlterar" multiple>
 										<p>
 											<label for="txtNome">Nome:</label>
-											<input type="text" name="nome" id="nomeAlt" required>
+											<input type="text" name="nomeAlterar" id="nomeAlt" required>
 										</p>
 
 
 
 										<p>
 											<label for="txtMarca">Marca:</label>
-											<input type="text" name="marca" required>
+											<input type="text" name="marcaAlterar" required>
 										</p>
 
 										<input type="hidden" name="metodo" value="">
@@ -115,7 +117,7 @@
 
 								<div class="col-6">
 									<p>
-										<input type="file" name="imagem">
+										<input type="file" name="imagemAlterar">
 									</p>
 									</form>
 								</div>

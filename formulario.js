@@ -42,24 +42,23 @@ $(document).ready(function () {
 	});
 
 
-	$("#btn_alterar").click(function () {
+	$("#btn_alterar").click(function (e) {
+		e.preventDefault();
 		$('#metodo').val('alterar');
-		
-		var form = $('form')[1];
-		var formulario = new FormData(form);
-		
+		var formAlterar = $('form')[0];
+		var formAlterarFull = new FormData(formAlterar);
 
-		if ($('.check').is(':checked') && $('#nomeAlt').val() != '') {
+		if ($('.check').is(':checked')) {
 		
 			$.ajax	({
 			url: 'valida.php',
 			method: 'POST',
-			data: formulario,
+			data: formAlterarFull,
 			processData: false,
 			contentType: false,
 			success: function(data){
 				$('#lista').html(data);
-				$('#formularioAlterar')[1].reset();
+				$('#formularioAlterar')[0].reset();
 			}
 		});
 		} else {

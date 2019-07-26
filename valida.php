@@ -11,12 +11,13 @@ if (isset($_POST['status'])){
     if ($metodo == 'cadastrar') {
         $nome   = isset ( $_POST['nome'] ) ? $_POST['nome'] : " Nenhum Nome ";
         $marca  = isset ( $_POST['marca'] ) ? $_POST['marca'] : " Nenhuma Marca ";
-        $arquivo = isset ( $_FILES['imagem'] ) ? $_FILES['imagem'] : " Nenhuma Imagem ";
+        $arquivo = isset ( $_FILES['imagem'] ) ? $_FILES['imagem'] : null;
         
         if ( isset( $_FILES['imagem'] ) ){
             $nomeImagem = $arquivo['name'];
             $tiposPermitidos = ['jpg' , 'jpeg' , 'png' , 'bmp'];
             $tamanho = $arquivo['size'];
+            
             $extensao = explode('.' , $nomeImagem);
             $extensao = end($extensao);
             $novoNome = rand() . "- $nomeImagem";
@@ -38,12 +39,16 @@ if (isset($_POST['status'])){
         $sql = mysqli_query($conn,"DELETE FROM tb_esmalte WHERE id_esmalte=$id");
         listarDados($conn);
     } elseif($metodo == 'alterar'){
+        var_dump('ALTERARRRR');
         $id     = isset ( $_POST['id'] ) ? $_POST['id'] : " Nenhum ID ";
-        $nome   = isset ( $_POST['nome'] ) ? $_POST['nome'] : " Nenhum Nome ";
-        $marca  = isset ( $_POST['marca'] ) ? $_POST['marca'] : " Nenhuma Marca ";
-        $arquivo = isset ( $_FILES['imagem'] ) ? $_FILES['imagem'] : " Nenhuma Imagem ";
+        $nome   = isset ( $_POST['nomeAlterar'] ) ? $_POST['nomeAlterar'] : " Nenhum Nome ";
+        $marca  = isset ( $_POST['marcaAlterar'] ) ? $_POST['marcaAlterar'] : " Nenhuma Marca ";
+        $arquivo = isset ( $_FILES['imagemAlterar'] ) ? $_FILES['imagemAlterar'] : "Sem Imagem";
+
+
+        var_dump($arquivo);
         
-        if ( isset( $_FILES['imagem'] ) ){
+        if ( $arquivo != "Sem Imagem" ){
             $nomeImagem = $arquivo['name'];
             $tiposPermitidos = ['jpg' , 'jpeg' , 'png' , 'bmp'];
             $tamanho = $arquivo['size'];
