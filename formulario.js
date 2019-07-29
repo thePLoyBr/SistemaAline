@@ -23,13 +23,12 @@ $(document).ready(function () {
 
 
 		if ($('.check').is(':checked')) {
-			var result = $('input:checked').val();
 			$.ajax({
 				url: 'valida.php',
 				method: 'POST',
 				data: {
 					'id': $('input:checked').val(),
-					'metodo': $('#metodo').val(),
+					'metodo': 'excluir',
 				},
 				dataType: 'html'
 			}).done(function (resposta) {
@@ -49,7 +48,7 @@ $(document).ready(function () {
 			
 			var data = new FormData();
 			data.append('imagem', $('#imagem')[0].files[0]);
-			data.append('metodoCadastrar', $('#metodoCadastrar').val());
+			data.append('metodo', 'cadastrar');
 			data.append('nome', $('#nome').val());
 			data.append('marca', $('#marca').val());
 			
@@ -87,7 +86,7 @@ $(document).ready(function () {
 		} else {
 			var data = new FormData();
 			data.append('imagemAlterar', $('#imagemAlterar')[0].files[0]);
-			data.append('metodoAlterar', $('#metodoAlterar').val());
+			data.append('metodo', 'alterar');
 			data.append('nomeAlterar', $('#nomeAlterar').val());
 			data.append('marcaAlterar', $('#marcaAlterar').val());
 			data.append('idAlterar', id);
