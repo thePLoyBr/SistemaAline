@@ -41,54 +41,57 @@ $(document).ready(function () {
 
 	});
 
-
-	$("#btn_alterar").click(function (e) {
-		e.preventDefault();
-		$('#metodo').val('alterar');
-		var formAlterar = $('form')[0];
-		var formAlterarFull = new FormData(formAlterar);
-
-		if ($('.check').is(':checked')) {
-		
-			$.ajax	({
-			url: 'valida.php',
-			method: 'POST',
-			data: formAlterarFull,
-			processData: false,
-			contentType: false,
-			success: function(data){
-				$('#lista').html(data);
-				$('#formularioAlterar')[0].reset();
-			}
-		});
-		} else {
-			alert('Marque um produto para alterar');
-		}
-
-	});
-
 	$('#btn_cadastrar').click(function (e) {
 		e.preventDefault();
-		$('#metodo').val('cadastrar');
-		var form = $('form')[0];
-		var formulario = new FormData(form);
-		
-		$.ajax	({
-			url: 'valida.php',
-			method: 'POST',
-			data: formulario,
-			processData: false,
-			contentType: false,
-			success: function(data){
-				$('#lista').html(data);
-				$('#formulario')[0].reset();
-			}
-		});
+		if ( $('#nome').val() == '' || $('#marca').val() == '' ){
+			alert('Você precisa preencher os campos: NOME e MARCA');
+		} else {
+			var form = $('form')[0];
+			var formulario = new FormData(form);
+			
+			$.ajax	({
+				url: 'valida.php',
+				method: 'POST',
+				data: formulario,
+				processData: false,
+				contentType: false,
+				success: function(data){
+					$('#lista').html(data);
+					$('#formulario')[0].reset();
+				}
+			});
+		}
 	});
 
-	$('#btnChamaModalAlterar').click(function () {
+	$('#btn_alterar').click(function (e) {
+		e.preventDefault();
 		if (!$('.check').is(':checked')){
 			alert('nao selecionado');
+		}
+
+		if ( $('#nomeAlterar').val() == '' || $('#marcaAlterar').val() == '' ){
+			alert('Você precisa preencher os campos: NOME e MARCA');
+		} else {
+			var idAlterar = $('.check:checked').val();
+			$("#idAlterar").attr("value", idAlterar);
+			var form = $('#formularioAlterar').serialize();
+			console.log(form);
+
+			
+
+			console.log(document.getElementById('idAlterar').value);
+			
+			
+			$.ajax	({
+				url: 'valida.php',
+				method: 'POST',
+				data: form,
+				
+				success: function(data){
+					$('#lista').html(data);
+					//$('#form')[1].reset();
+				}
+			});
 		}
 	});
 

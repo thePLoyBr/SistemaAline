@@ -9,14 +9,13 @@
 	<script src="_js/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="_js/bootstrap.js"></script>
 	<script src="formulario.js" type="text/javascript"></script>
-	<script src="https://kit.fontawesome.com/628644ce95.js"></script>
 </head>
 
 <body>
 
 	<div class="container-fluid text-center">
 		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalCadastro">
-		<i class="fab fa-accessible-icon"></i>
+		
 
 Cadastrar</button>
 		
@@ -44,7 +43,7 @@ Cadastrar</button>
 									<form id="formulario" enctype="multipart/form-data" multiple name="arquivo">
 										<p>
 											<label for="txtNome">Nome:</label>
-											<input type="text" name="nome" required>
+											<input type="text" name="nome" id="nome" required>
 										</p>
 
 
@@ -54,7 +53,7 @@ Cadastrar</button>
 											<input type="text" name="marca" id="marca" required>
 										</p>
 
-										<input type="hidden" name="metodo" id="metodo" value="">
+										<input type="hidden" name="metodo" id="metodoCadastrar" value="cadastrar">
 										<button class="btn btn-outline-success" type="submit" id="btn_cadastrar"
 											value="Cadastrar">Cadastrar</button>
 
@@ -72,7 +71,7 @@ Cadastrar</button>
 						</div>
 
 
-					</div>
+						</div>
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -96,20 +95,21 @@ Cadastrar</button>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
-									<form id="formularioAlterar" enctype="multipart/form-data" name="arquivoAlterar" multiple>
+									<form id="formularioAlterar" enctype="multipart/form-data" name="formularioAlterar" multiple>
 										<p>
 											<label for="txtNome">Nome:</label>
-											<input type="text" name="nomeAlterar" id="nomeAlt" required>
+											<input type="text" name="nomeAlterar" id="nomeAlterar" required>
 										</p>
 
 
 
 										<p>
 											<label for="txtMarca">Marca:</label>
-											<input type="text" name="marcaAlterar" required>
+											<input type="text" name="marcaAlterar" id="marcaAlterar" required>
 										</p>
 
-										<input type="hidden" name="metodo" value="">
+										<input type="hidden" name="metodoAlterar" value="alterar">
+										<input type="hidden" name="idAlterar" id="idAlterar" value="nada">
 										<button class="btn btn-outline-success" type="submit" id="btn_alterar"
 											value="Alterar">Alterar</button>
 
@@ -117,7 +117,7 @@ Cadastrar</button>
 
 								<div class="col-6">
 									<p>
-										<input type="file" name="imagemAlterar">
+										<input type="file" name="imagemAlterar" id="imagemAlterar">
 									</p>
 									</form>
 								</div>
