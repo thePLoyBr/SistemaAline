@@ -13,14 +13,12 @@ if (isset($_POST['status'])){
     if ($metodoCadastrar == 'cadastrar') {
         $nome   = isset ( $_POST['nome'] ) ? $_POST['nome'] : " Nenhum Nome ";
         $marca  = isset ( $_POST['marca'] ) ? $_POST['marca'] : " Nenhuma Marca ";
-        
-        
+
         if ( isset( $_FILES['imagem']) ){
             $arquivo = isset ( $_FILES['imagem'] ) ? $_FILES['imagem'] : null;
             $nomeImagem = $arquivo['name'];
             $tiposPermitidos = ['jpg' , 'jpeg' , 'png' , 'bmp'];
             $tamanho = $arquivo['size'];
-            
             $extensao = explode('.' , $nomeImagem);
             $extensao = end($extensao);
             $novoNome = rand() . "- $nomeImagem";
@@ -45,14 +43,10 @@ if (isset($_POST['status'])){
     } elseif($metodoAlterar == 'alterar'){
         $id     = isset ( $_POST['idAlterar'] ) ? $_POST['idAlterar'] : " Nenhum ID ";    
         $nome   = isset ( $_POST['nomeAlterar'] ) ? $_POST['nomeAlterar'] : " Nenhum Nome ";
-        $marca  = isset ( $_POST['marcaAlterar'] ) ? $_POST['marcaAlterar'] : " Nenhuma Marca ";
-        var_dump($nome);        
-        var_dump($marca);        
-        var_dump($id);        
+        $marca  = isset ( $_POST['marcaAlterar'] ) ? $_POST['marcaAlterar'] : " Nenhuma Marca ";      
 
         if ( isset($_FILES['imagemAlterar']) ){
             $arquivo = isset ( $_FILES['imagemAlterar'] ) ? $_FILES['imagemAlterar'] : null;
-            var_dump($arquivo);
             $nomeImagem = $arquivo['name'];
             $tiposPermitidos = ['jpg' , 'jpeg' , 'png' , 'bmp'];
             $tamanho = $arquivo['size'];
@@ -63,15 +57,15 @@ if (isset($_POST['status'])){
                 if($tamanho > 1e+6) {
                     echo('Arquivo muito grande: Tamanho máximo: 1MB');
                 } else{
-                    $mover = move_uploaded_file($_FILES['imagem']['tmp_name'], '_imagens/' . $novoNome);
+                    $mover = move_uploaded_file($_FILES['imagemAlterar']['tmp_name'], '_imagens/' . $novoNome);
+                    $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='$novoNome' WHERE id_esmalte=$id");
                 }
             }else {
                 echo('Tipo de arquivo não permitido');
-                $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='$novoNome' WHERE id_esmalte=$id");
+                $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='logo.png' WHERE id_esmalte=$id");
             }
         } else{
             echo('Imagem não setada');
-            $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='logo.png' WHERE id_esmalte=$id");
         }
 
         listarDados($conn);

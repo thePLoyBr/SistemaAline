@@ -40,7 +40,7 @@ Cadastrar</button>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
-									<form id="formulario" enctype="multipart/form-data" multiple name="arquivo">
+									<form id="formularioCadastrar" enctype="multipart/form-data" multiple name="formularioCadastrar">
 										<p>
 											<label for="txtNome">Nome:</label>
 											<input type="text" name="nome" id="nome" required>
@@ -61,7 +61,7 @@ Cadastrar</button>
 
 								<div class="col-6">
 									<p>
-										<input type="file" name="imagem" />
+										<input type="file" name="imagem" id="imagem" />
 
 									</p>
 									</form>
@@ -108,8 +108,8 @@ Cadastrar</button>
 											<input type="text" name="marcaAlterar" id="marcaAlterar" required>
 										</p>
 
-										<input type="hidden" name="metodoAlterar" value="alterar">
-										<input type="hidden" name="idAlterar" id="idAlterar" value="nada">
+										<input type="hidden" name="metodoAlterar" id="metodoAlterar" value="alterar">
+										<input type="hidden" name="idAlterar" id="idAlterar" value="">
 										<button class="btn btn-outline-success" type="submit" id="btn_alterar"
 											value="Alterar">Alterar</button>
 

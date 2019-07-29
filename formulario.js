@@ -46,20 +46,31 @@ $(document).ready(function () {
 		if ( $('#nome').val() == '' || $('#marca').val() == '' ){
 			alert('Você precisa preencher os campos: NOME e MARCA');
 		} else {
-			var form = $('form')[0];
-			var formulario = new FormData(form);
 			
+			var data = new FormData();
+			data.append('imagem', $('#imagem')[0].files[0]);
+			data.append('metodoCadastrar', $('#metodoCadastrar').val());
+			data.append('nome', $('#nome').val());
+			data.append('marca', $('#marca').val());
+			
+			
+			console.log(data);
+						
 			$.ajax	({
 				url: 'valida.php',
 				method: 'POST',
-				data: formulario,
+				data: data,
 				processData: false,
 				contentType: false,
 				success: function(data){
 					$('#lista').html(data);
-					$('#formulario')[0].reset();
+					$('#formularioCadastrar')[0].reset();
 				}
 			});
+
+
+
+			
 		}
 	});
 
@@ -69,27 +80,29 @@ $(document).ready(function () {
 			alert('nao selecionado');
 		}
 
+		var id = $('.check:checked').val();
+
 		if ( $('#nomeAlterar').val() == '' || $('#marcaAlterar').val() == '' ){
 			alert('Você precisa preencher os campos: NOME e MARCA');
 		} else {
-			var idAlterar = $('.check:checked').val();
-			$("#idAlterar").attr("value", idAlterar);
-			var form = $('#formularioAlterar').serialize();
-			console.log(form);
+			var data = new FormData();
+			data.append('imagemAlterar', $('#imagemAlterar')[0].files[0]);
+			data.append('metodoAlterar', $('#metodoAlterar').val());
+			data.append('nomeAlterar', $('#nomeAlterar').val());
+			data.append('marcaAlterar', $('#marcaAlterar').val());
+			data.append('idAlterar', id);
 
-			
+			console.log(document.getElementById('metodoAlterar'));
 
-			console.log(document.getElementById('idAlterar').value);
-			
-			
 			$.ajax	({
 				url: 'valida.php',
 				method: 'POST',
-				data: form,
-				
+				data: data,
+				processData: false,
+				contentType: false,
 				success: function(data){
 					$('#lista').html(data);
-					//$('#form')[1].reset();
+					$('#formularioAlterar')[0].reset();
 				}
 			});
 		}
