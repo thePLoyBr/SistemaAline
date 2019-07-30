@@ -85,7 +85,7 @@ function listarDados($conn)
                         }else {
                             " class= 'usado'";
                         } echo ">
-                    <td><input type='checkbox' value='{$dados['id_esmalte']}' class='check'></td>
+                    <td><input type='checkbox' class = 'check' value='{$dados['id_esmalte']}'></td>
                     <td>                              {$dados['id_esmalte']}      </td>
                     <td>                              {$dados['nome_esmalte']}    </td>
                     <td>                              {$dados['marca_esmalte']}   </td>

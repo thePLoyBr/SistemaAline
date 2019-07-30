@@ -8,23 +8,22 @@
 	<link rel="stylesheet" type="text/css" href="_css/bootstrap.css">
 	<script src="_js/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="_js/bootstrap.js"></script>
-	<script src="formulario.js" type="text/javascript"></script>
 </head>
 
 <body>
 
 	<div class="container-fluid text-center">
 		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalCadastro">
-		
+			
 
 Cadastrar</button>
-		
-		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalAlterar"	id="btnChamaModalAlterar" type="submit">Alterar</button>
-		
-		<button class="btn btn-outline-success" type="button" id="btn_excluir">Excluir</button>
-		
 
-		<!-- Modals-->
+<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalAlterar"	id="btnChamaModalAlterar" type="submit">Alterar</button>
+
+<button class="btn btn-outline-success" type="button" id="btn_excluir">Excluir</button>
+
+
+<!-- Modals-->
 		<div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -34,9 +33,9 @@ Cadastrar</button>
 							<span>&times;</span>
 						</button>
 					</div>
-
+					
 					<div class="modal-body">
-
+						
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
@@ -45,40 +44,40 @@ Cadastrar</button>
 											<label for="txtNome">Nome:</label>
 											<input type="text" name="nome" id="nome" required>
 										</p>
-
-
-
+										
+										
+										
 										<p>
 											<label for="txtMarca">Marca:</label>
 											<input type="text" name="marca" id="marca" required>
 										</p>
-
+										
 										<button class="btn btn-outline-success" type="submit" id="btn_cadastrar"
-											value="Cadastrar">Cadastrar</button>
-
-								</div>
-
-								<div class="col-6">
-									<p>
-										<input type="file" name="imagem" id="imagem" />
-
-									</p>
+										value="Cadastrar">Cadastrar</button>
+										
+									</div>
+									
+									<div class="col-6">
+										<p>
+											<input type="file" name="imagem" id="imagem" />
+											
+										</p>
 									</form>
 								</div>
-
+								
 							</div>
 						</div>
+						
 
-
-						</div>
-
+					</div>
+					
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -88,9 +87,9 @@ Cadastrar</button>
 							<span>&times;</span>
 						</button>
 					</div>
-
+					
 					<div class="modal-body">
-
+						
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-6">
@@ -99,47 +98,48 @@ Cadastrar</button>
 											<label for="txtNome">Nome:</label>
 											<input type="text" name="nomeAlterar" id="nomeAlterar" required>
 										</p>
-
-
-
+										
+										
+										
 										<p>
 											<label for="txtMarca">Marca:</label>
 											<input type="text" name="marcaAlterar" id="marcaAlterar" required>
 										</p>
 										<button class="btn btn-outline-success" type="submit" id="btn_alterar"
-											value="Alterar">Alterar</button>
+										value="Alterar">Alterar</button>
 
 								</div>
-
+								
 								<div class="col-6">
 									<p>
 										<input type="file" name="imagemAlterar" id="imagemAlterar">
 									</p>
-									</form>
-								</div>
-
+								</form>
 							</div>
+							
 						</div>
-
-
 					</div>
 
-					<div class="modal-footer">
+					
+				</div>
+				
+				<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="d-flex p-2">
 			<div id="lista" class="table table-lg table-responsive table-bordered table-hover text-center d-flex p-2 justify-content-center"></div>
 		</div>
 	</div>
 	<input type="hidden" value="online" id="status">
-
-
-
+	
+	
+	
 	<div class="jumbotron col-sm-12 text-center">teste</div>
+	<script src="formulario.js" type="text/javascript"></script>
 </body>
 
 </html>

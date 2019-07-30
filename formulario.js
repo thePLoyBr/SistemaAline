@@ -1,13 +1,8 @@
+
+
 $(document).ready(function () {
-
-	$('input:checkbox').change(function(){
-		if($(this).is(':checked')){
-			alert('Checked');
-		} else {
-		alert('unChecked');
-		}
-	});
-
+	 
+	
 	$.ajax({
 
 		url: 'valida.php',
@@ -17,18 +12,26 @@ $(document).ready(function () {
 		},
 		dataType: 'html'
 	}).done(function (resposta) {
-
+		
 		//Preenche Div Lista
 		$('#lista').html(resposta);
 		//muda status
 		$('status').val('');
-	});
 
+		$(".check").click(function(){
+			if ( $('.check').is(':checked') ){
+				alert("checado");
+			} else{
+				alert('nao checado');
+			}
+		});
+	});
+	
 	$("#btn_excluir").click(function () {
 		$('#metodo').val('excluir');
-
-
-		if ($('.check').is(':checked')) {
+		
+		
+		if ($('input:checkbox').is(':checked')) {
 			$.ajax({
 				url: 'valida.php',
 				method: 'POST',
@@ -43,9 +46,9 @@ $(document).ready(function () {
 		} else {
 			alert('Marque um produto para excluir');
 		}
-
+		
 	});
-
+	
 	$('#btn_cadastrar').click(function (e) {
 		e.preventDefault();
 		if ( $('#nome').val() == '' || $('#marca').val() == '' ){
@@ -60,7 +63,7 @@ $(document).ready(function () {
 			
 			
 			console.log(data);
-						
+			
 			$.ajax	({
 				url: 'valida.php',
 				method: 'POST',
@@ -74,15 +77,15 @@ $(document).ready(function () {
 			});
 		}
 	});
-
+	
 	$('#btn_alterar').click(function (e) {
 		e.preventDefault();
 		if (!$('.check').is(':checked')){
 			alert('nao selecionado');
 		}
-
+		
 		var id = $('.check:checked').val();
-
+		
 		if ( $('#nomeAlterar').val() == '' || $('#marcaAlterar').val() == '' ){
 			alert('Você precisa preencher os campos: NOME e MARCA');
 		} else {
@@ -92,9 +95,8 @@ $(document).ready(function () {
 			data.append('nomeAlterar', $('#nomeAlterar').val());
 			data.append('marcaAlterar', $('#marcaAlterar').val());
 			data.append('idAlterar', id);
-
-			console.log(document.getElementById('metodoAlterar'));
-
+			
+			
 			$.ajax	({
 				url: 'valida.php',
 				method: 'POST',
@@ -110,10 +112,8 @@ $(document).ready(function () {
 	});
 
 
-});
-
-
-
+});  
+  
 
 
 
