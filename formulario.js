@@ -1,6 +1,12 @@
 $(document).ready(function () {
 
-
+	$('input:checkbox').change(function(){
+		if($(this).is(':checked')){
+			alert('Checked');
+		} else {
+		alert('unChecked');
+		}
+	});
 
 	$.ajax({
 
@@ -66,10 +72,6 @@ $(document).ready(function () {
 					$('#formularioCadastrar')[0].reset();
 				}
 			});
-
-
-
-			
 		}
 	});
 

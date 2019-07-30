@@ -21,19 +21,19 @@ if (isset($_POST['status'])) {
             $novoNome = rand() . "- $nomeImagem";
             if (in_array($extensao, $tiposPermitidos)) {
                 if ($tamanho > 1e+6) {
-                    echo ('Arquivo muito grande: Tamanho máximo: 1MB');
+                    echo ("<script>'Arquivo muito grande: Tamanho máximo: 1MB'</script>");
                 } else {
                     $mover = move_uploaded_file($_FILES['imagem']['tmp_name'], '_imagens/' . $novoNome);
                     $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada,foto_esmalte)
                                                 VALUES ('$nome','$marca',NOW(),'$novoNome')");
                 }
             } else {
-                echo ('Arquivo não permitido');
+                echo ("<script>alert('Extensão de arquivo não permitida')</script>");
             }
         } else {
 
             $sql = mysqli_query($conn, "INSERT INTO tb_esmalte (nome_esmalte, marca_esmalte,dt_entrada,foto_esmalte) 
-                                            VALUES ('$nome','$marca',NOW(),'logo.png')");
+                                        VALUES ('$nome','$marca',NOW(),'logo.png')");
         }
 
         listarDados($conn);
@@ -56,13 +56,13 @@ if (isset($_POST['status'])) {
             $novoNome = rand() . "- $nomeImagem";
             if (in_array($extensao, $tiposPermitidos)) {
                 if ($tamanho > 1e+6) {
-                    echo ('Arquivo muito grande: Tamanho máximo: 1MB');
+                    echo ("<script>'Arquivo muito grande: Tamanho máximo: 1MB'</script>");
                 } else {
                     $mover = move_uploaded_file($_FILES['imagemAlterar']['tmp_name'], '_imagens/' . $novoNome);
                     $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='$novoNome' WHERE id_esmalte=$id");
                 }
             } else {
-                echo ('Tipo de arquivo não permitido');
+                echo ("<script>alert('Extensão de arquivo não permitida')</script>");
             }
         } else {
             $sql = mysqli_query($conn, "UPDATE tb_esmalte SET nome_esmalte='$nome', marca_esmalte='$marca', foto_esmalte='logo.png' WHERE id_esmalte=$id");
@@ -75,16 +75,21 @@ if (isset($_POST['status'])) {
 
 function listarDados($conn)
 {
-    $query = mysqli_query($conn, "SELECT * FROM tb_esmalte");
+    $tempo = date('Y-m-d');
+    $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
 
     echo ("<table border='1'> <th>Selecionar</th> <th>ID</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th>");
     while ($dados = mysqli_fetch_assoc($query)) {
-        echo "   <tr>
+        echo "   <tr"; if ($dados['dt_entrada'] == $tempo) {
+                        echo " class = 'novo'";
+                        }else {
+                            " class= 'usado'";
+                        } echo ">
                     <td><input type='checkbox' value='{$dados['id_esmalte']}' class='check'></td>
                     <td>                              {$dados['id_esmalte']}      </td>
                     <td>                              {$dados['nome_esmalte']}    </td>
                     <td>                              {$dados['marca_esmalte']}   </td>
-                    <td>                              {$dados['dt_entrada']}      </td>
+                    <td>                                {$dados['dt_entrada']}      </td>
                     <td>                              <img src='_imagens/{$dados['foto_esmalte']}' width='100px'/>      </td>
                                   
                 </tr>";
