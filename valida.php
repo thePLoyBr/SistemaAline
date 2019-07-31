@@ -76,7 +76,7 @@ if (isset($_POST['status'])) {
         var_dump('ESSE é o ID: ' . $id);
         $query = mysqli_query($conn, "SELECT * FROM tb_esmalte WHERE $id");
         //var_dump('QUERY::: '.$query);
-        $dados = mysqli_fetch_assoc($query);
+        $dados = mysqli_fetch_assoc($query);    
         
         if ($dados['usado'] == '0') {
             mysqli_query($conn, "UPDATE tb_esmalte SET usado='1' WHERE id_esmalte=$id");
