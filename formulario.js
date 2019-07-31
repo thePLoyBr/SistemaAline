@@ -1,4 +1,52 @@
+function escutarCheckbox(){
 
+	$(".check").change(function(){
+		var id = $(this).val();
+		$.ajax({
+			url: 'valida.php',
+			method: 'POST',
+			data: {
+				'id': id,
+				'metodo': 'usado',
+			},
+			dataType: 'html'
+		}).done(function (resposta) {
+			$('#lista').html(resposta);
+			escutarCheckbox();
+			escutarExcluir();
+		});
+	
+});
+}
+
+function escutarExcluir(){
+
+	$(".modalExcluir").click(function(){
+		var id = $(this).val();
+		var name =$(this).attr('name');
+		$('.corpoExcluir').html('<p> Deseja excluir o produto? </p> <p>'+ name +'</p>');
+
+		if($('#btnExcluir').click(function(){
+
+			$.ajax({
+				url: 'valida.php',
+				method: 'POST',
+				data: {
+					'id':id,
+					'metodo': 'excluir',
+				},
+				dataType: 'html'
+			}).done(function (resposta) {
+				$('#lista').html(resposta);
+				escutarCheckbox();
+				escutarExcluir();
+			});
+		}));
+
+		
+	
+	});
+}
 
 $(document).ready(function () {
 	 
@@ -17,50 +65,10 @@ $(document).ready(function () {
 		$('#lista').html(resposta);
 		//muda status
 		$('status').val('');
-
-				$(".check").change(function(){
-						var id = $(this).val();
-						alert('Alterado: '+id);
-						$.ajax({
-							url: 'valida.php',
-							method: 'POST',
-							data: {
-								'id': id,
-								'metodo': 'usado',
-							},
-							dataType: 'html'
-						}).done(function (resposta) {
-							$('#lista').html(resposta);
-						});
-					
-				});
-				
-			
-		});
-	
-	
-	$("#btn_excluir").click(function () {
-		$('#metodo').val('excluir');
-		
-		
-		if ($('input:checkbox').is(':checked')) {
-			$.ajax({
-				url: 'valida.php',
-				method: 'POST',
-				data: {
-					'id': $('input:checked').val(),
-					'metodo': 'excluir',
-				},
-				dataType: 'html'
-			}).done(function (resposta) {
-				$('#lista').html(resposta);
-			});
-		} else {
-			alert('Marque um produto para excluir');
-		}
-		
+		escutarCheckbox();
+		escutarExcluir();
 	});
-	
+				
 	$('#btn_cadastrar').click(function (e) {
 		e.preventDefault();
 		if ( $('#nome').val() == '' || $('#marca').val() == '' ){
@@ -84,11 +92,24 @@ $(document).ready(function () {
 				success: function(data){
 					$('#lista').html(data);
 					$('#formularioCadastrar')[0].reset();
+					escutarCheckbox();
+					escutarExcluir();
 				}
 			});
 		}
 	});
-	
+
+
+
+
+	$('#btnChamaModalAlterar').click(function(e){
+		if (!$('.check').is(':checked')){
+			alert('Selecione o produto que deseja alterar');
+			return false;
+		}
+	});
+
+
 	$('#btn_alterar').click(function (e) {
 		e.preventDefault();
 		if (!$('.check').is(':checked')){
@@ -117,6 +138,8 @@ $(document).ready(function () {
 				success: function(data){
 					$('#lista').html(data);
 					$('#formularioAlterar')[0].reset();
+					escutarCheckbox();
+					escutarExcluir();
 				}
 			});
 		}

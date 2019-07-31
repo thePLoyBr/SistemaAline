@@ -14,14 +14,13 @@
 <body>
 
 	<div class="container-fluid text-center">
-		<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalCadastro">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastro">
 			
 
 Cadastrar</button>
 
-<button class="btn btn-outline-success" data-toggle="modal" data-target="#modalAlterar"	id="btnChamaModalAlterar" type="submit">Alterar</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#modalAlterar"	id="btnChamaModalAlterar" type="submit">Alterar</button>
 
-<button class="btn btn-outline-success" type="button" id="btn_excluir">Excluir</button>
 
 
 <!-- Modals-->
@@ -53,9 +52,6 @@ Cadastrar</button>
 											<input type="text" name="marca" id="marca" required>
 										</p>
 										
-										<button class="btn btn-outline-success" type="submit" id="btn_cadastrar"
-										value="Cadastrar">Cadastrar</button>
-										
 									</div>
 									
 									<div class="col-6">
@@ -63,22 +59,27 @@ Cadastrar</button>
 											<input type="file" name="imagem" id="imagem" />
 											
 										</p>
-									</form>
+									</div>
+									
 								</div>
-								
 							</div>
+							
+							
 						</div>
 						
-
-					</div>
-					
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						<div class="modal-footer">
+								<button class="btn btn-primary" type="submit" id="btn_cadastrar"
+								value="Cadastrar">Cadastrar</button>
+								
+							</form>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		
+
 		<div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -106,40 +107,78 @@ Cadastrar</button>
 											<label for="txtMarca">Marca:</label>
 											<input type="text" name="marcaAlterar" id="marcaAlterar" required>
 										</p>
-										<button class="btn btn-outline-success" type="submit" id="btn_alterar"
-										value="Alterar">Alterar</button>
-
+										
+									</div>
+									
+									<div class="col-6">
+										<p>
+											<input type="file" name="imagemAlterar" id="imagemAlterar">
+										</p>
+									</div>
+									
 								</div>
-								
-								<div class="col-6">
-									<p>
-										<input type="file" name="imagemAlterar" id="imagemAlterar">
-									</p>
-								</form>
 							</div>
 							
+							
 						</div>
-					</div>
-
-					
-				</div>
-				
-				<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+						
+						<div class="modal-footer">
+								<button class="btn btn-outline-success" type="submit" id="btn_alterar"
+								value="Alterar">Alterar</button>
+						</form>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="d-flex p-2">
-			<div id="lista" class="table table-lg table-responsive table-bordered table-hover text-center d-flex p-2 justify-content-center"></div>
+		<div class="d-flex">
+			<div id="lista" class="table thead-dark table-sm text-center d-flex justify-content-center"></div>
 		</div>
 	</div>
+
+
+
+	<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"> Excluir </h5>
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				
+				<div class="modal-body">
+					
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-6 corpoExcluir">
+							</div>
+							
+						</div>
+					</div>
+					
+
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnExcluir">Excluir</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 	<input type="hidden" value="online" id="status">
 	
 	
 	
-	<div class="jumbotron col-sm-12 text-center">teste</div>
+	<div class="jumbotron col-sm-12 text-center"></div>
 </body>
 
 </html>

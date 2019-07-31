@@ -6,7 +6,6 @@ if (isset($_POST['status'])) {
     listarDados($conn);
 } else {
     $metodo = isset($_POST['metodo']) ? $_POST['metodo'] : null;
-    var_dump('METODO: ' . $metodo);
     if ($metodo == 'cadastrar') {
         $nome   = isset($_POST['nome']) ? $_POST['nome'] : " Nenhum Nome ";
         $marca  = isset($_POST['marca']) ? $_POST['marca'] : " Nenhuma Marca ";
@@ -73,23 +72,8 @@ if (isset($_POST['status'])) {
     } elseif ($metodo == 'usado') {
 
         $id = isset($_POST['id']) ? $_POST['id'] : null;
-        var_dump('ESSE é o ID: ' . $id);
-        $query = mysqli_query($conn, "SELECT * FROM tb_esmalte WHERE $id");
-        //var_dump('QUERY::: '.$query);
-        $dados = mysqli_fetch_assoc($query);    
-        
-        if ($dados['usado'] == '0') {
-            mysqli_query($conn, "UPDATE tb_esmalte SET usado='1' WHERE id_esmalte=$id");
-            echo($dados['usado']);
-            listarDados($conn);
-        } else {
-            mysqli_query($conn, "UPDATE tb_esmalte SET usado='0' WHERE id_esmalte=$id");
-            echo($dados['usado']);
-            listarDados($conn);
-        }
-
-        //$sql = mysqli_query($conn, "UPDATE tb_esmalte WHERE id_esmalte=$id SET usado = CASE WHEN usado = 1 THEN 0 ");
-        //$sql = mysqli_query($conn, "UPDATE tb_esmalte SET usado ='1' WHERE id_esmalte=$id");
+        mysqli_query($conn, "UPDATE tb_esmalte SET usado = if(usado=0,1,0) WHERE id_esmalte=$id");
+        listarDados($conn);
     }
 }
 
@@ -99,25 +83,25 @@ function listarDados($conn)
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
 
-    echo ("<table border='1'> <th>Selecionar</th> <th>ID</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th>");
+    echo ("<table> <th>Excluir</th> <th>Usado</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th>");
     while ($dados = mysqli_fetch_assoc($query)) {
         echo "   <tr";
-        if ($dados['dt_entrada'] == $tempo) {
+        if ($dados['dt_entrada'] == $tempo && $dados['usado'] == '0') {
             echo " class = 'novo'";
         } else {
             " class= 'usado'";
         }
-        echo (">
+        echo ("> <td><button type='button' class='btn btn-outline-danger modalExcluir' value='{$dados['id_esmalte']}' data-toggle='modal' data-target='#modalExcluir' name='{$dados['nome_esmalte']}'>X</button></td>
                         <td><input type='checkbox'");
         if ($dados['usado'] == '1') {
             echo " checked";
         }
         echo " class = 'check' multiple value='{$dados['id_esmalte']}'></td>
-                    <td>                              {$dados['id_esmalte']}      </td>
+                    
                     <td>                              {$dados['nome_esmalte']}    </td>
                     <td>                              {$dados['marca_esmalte']}   </td>
                     <td>                              {$dados['dt_entrada']}      </td>
-                    <td>                              <img src='_imagens/{$dados['foto_esmalte']}' width='100px'/>      </td>
+                    <td>                              <div class='imagem'><img src='_imagens/{$dados['foto_esmalte']}' width='80px'/></div>      </td>
                                   
                 </tr>";
     }
