@@ -18,14 +18,26 @@ $(document).ready(function () {
 		//muda status
 		$('status').val('');
 
-		$(".check").click(function(){
-			if ( $('.check').is(':checked') ){
-				alert("checado");
-			} else{
-				alert('nao checado');
-			}
+				$(".check").change(function(){
+						var id = $(this).val();
+						alert('Alterado: '+id);
+						$.ajax({
+							url: 'valida.php',
+							method: 'POST',
+							data: {
+								'id': id,
+								'metodo': 'usado',
+							},
+							dataType: 'html'
+						}).done(function (resposta) {
+							$('#lista').html(resposta);
+						});
+					
+				});
+				
+			
 		});
-	});
+	
 	
 	$("#btn_excluir").click(function () {
 		$('#metodo').val('excluir');
@@ -60,9 +72,8 @@ $(document).ready(function () {
 			data.append('metodo', 'cadastrar');
 			data.append('nome', $('#nome').val());
 			data.append('marca', $('#marca').val());
+			data.append('estado', '0');
 			
-			
-			console.log(data);
 			
 			$.ajax	({
 				url: 'valida.php',
