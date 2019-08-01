@@ -83,7 +83,7 @@ function listarDados($conn)
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
 
-    echo ("<section> <article> <div class='linha'> <h6>Excluir</h6> <h6>Usado</h6> <h6>Nome</h6> <h6>Marca</h6> <h6>Data</h6> <h6>Imagem</h6> </div> </article>");
+    echo ("<section> <article><div class='linha'> <div class='btnProduto'> <h6>Excluir</h6> </div> <div class='checkProduto'> Usado </div> <h6>Nome</h6> <h6>Marca</h6> <h6>Data</h6> <h6>Imagem</h6> </div> </article>");
     while ($dados = mysqli_fetch_assoc($query)) {
         if ($dados['dt_entrada'] == $tempo && $dados['usado'] == 0) {
             echo " <article class = 'novo';>";
@@ -93,8 +93,9 @@ function listarDados($conn)
         echo "  <div class='linha'>
         
                     <div class='btnProduto'>
-                        <button type='button' class='btn btn-outline-danger modalExcluir' value='{$dados['id_esmalte']}' 
-                        data-toggle='modal' data-target='#modalExcluir' name='{$dados['nome_esmalte']}'>Apagar</button>
+
+                        <button type='button' class='btn btn-circle-sm btn-danger modalExcluir' value='{$dados['id_esmalte']}' 
+                        data-toggle='modal' data-target='#modalExcluir' name='{$dados['nome_esmalte']}'>X</button>
                     </div>
 
                     <div class='checkProduto'>
@@ -106,14 +107,11 @@ function listarDados($conn)
                     </div>
 
 
-                    <div class='produto'>{$dados['nome_esmalte']}</div>            
+                    <div class='produto texto'>{$dados['nome_esmalte']}</div>            
                      
-                    <div class='produto'> {$dados['marca_esmalte']} </div>      
+                    <div class='produto texto'> {$dados['marca_esmalte']} </div>      
                     <div class='dataProduto'> {$dados['dt_entrada']} </div> 
-                    
-                     
-                        
-                            <img src='_imagens/{$dados['foto_esmalte']}' width='80px' class='imagemProduto img-responsive pull-right rounded-circle'/>
+                    <img src='_imagens/{$dados['foto_esmalte']}' class='imagemProduto rounded-circle'/>
                            
                     
             

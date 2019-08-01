@@ -1,12 +1,17 @@
+
+
 section {	
 width: 50%;
 }
+
 
 .linha {
 	display: flex;
 	justify-content: space-around;
 	border-radius: 50px; 
 	margin: 10px;
+	min-height: 110px;
+	max-height: 110px;
 }
 
 .btn {
@@ -14,18 +19,21 @@ width: 50%;
 }
 
 .novo {
-	background-color: #b8d1bf;
+	background-color: #88bafc;
 	border-radius: 50px;
 	
 }
 
 .usado {
-	background-color: bisque;
+	background-color:#9bb7db;
 	border-radius: 50px;
 	
 }
 
+.texto{
+	font-weight: 500;
 
+}
 .jumbotron{
 	height: 1px;
 }
@@ -36,26 +44,35 @@ form{
 
 .produto{
 	width: 20%;
-	line-height: 80px;
+	line-height: 110px;
 }
 
 .checkProduto{
 	width: 2%;
-	line-height: 80px;
+	line-height: 110px;
+}
+
+.usadoProduto{
+	width: 2%;
+	line-height: 110px;
 }
 
 .dataProduto{
 	width: 10%;
-	line-height: 80px;
+	line-height: 110px;
 }
 
 .btnProduto {
 	width: 10%;
-	line-height: 80px;
+	line-height: 90px;
+	margin-top: 0;
 }
 
-.imagemProduto{
+
+.imagemProduto {
+	object-fit: fill; /* Do not scale the image */
+	object-position: center; /* Center the image within the element */
 	width: 10%;
-	line-height: 80px;
+	max-height: 250px;
 	margin: 10px;
-}
+  }
