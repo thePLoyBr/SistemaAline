@@ -83,7 +83,7 @@ function listarDados($conn)
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
 
-    echo ("<section> <article> Excluir Usado Nome Marca Data Imagem</article>");
+    echo ("<section> <article> <div class='linha'> <h6>Excluir</h6> <h6>Usado</h6> <h6>Nome</h6> <h6>Marca</h6> <h6>Data</h6> <h6>Imagem</h6> </div> </article>");
     while ($dados = mysqli_fetch_assoc($query)) {
         if ($dados['dt_entrada'] == $tempo && $dados['usado'] == 0) {
             echo " <article class = 'novo';>";
