@@ -1,5 +1,6 @@
-.container-fluid{
-	background-color: lightgrey;
+.linha{
+	background-color: black;
+	border-radius: 10%;
 }
 
 .btn {
@@ -8,6 +9,7 @@
 
 .novo {
 	background-color: #b8d1bf;
+	border-radius: 10%;
 }
 
 .jumbotron{

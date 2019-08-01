@@ -83,28 +83,45 @@ function listarDados($conn)
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
 
-    echo ("<table> <th>Excluir</th> <th>Usado</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th>");
+    echo ("<table> <tr><th>Excluir</th> <th>Usado</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th></tr>");
     while ($dados = mysqli_fetch_assoc($query)) {
-        echo "   <tr";
-        if ($dados['dt_entrada'] == $tempo && $dados['usado'] == '0') {
-            echo " class = 'novo'";
+        if ($dados['dt_entrada'] == $tempo && $dados['usado'] == 0) {
+            echo " <tr class = 'novo'>";
         } else {
-            " class= 'usado'";
+            echo "<tr class = 'usado'>";
         }
-        echo ("> <td><button type='button' class='btn btn-outline-danger modalExcluir' value='{$dados['id_esmalte']}' data-toggle='modal' data-target='#modalExcluir' name='{$dados['nome_esmalte']}'>X</button></td>
-                        <td><input type='checkbox'");
-        if ($dados['usado'] == '1') {
-            echo " checked";
-        }
-        echo " class = 'check' multiple value='{$dados['id_esmalte']}'></td>
+        echo "  <div class='linha'>
+        
+                    <td>
+                        <button type='button' class='btn btn-outline-danger modalExcluir' value='{$dados['id_esmalte']}' 
+                        data-toggle='modal' data-target='#modalExcluir' name='{$dados['nome_esmalte']}'>Apagar</button>
+                    </td>
                     
-                    <td>                              {$dados['nome_esmalte']}    </td>
-                    <td>                              {$dados['marca_esmalte']}   </td>
-                    <td>                              {$dados['dt_entrada']}      </td>
-                    <td>                              <div class='imagem'><img src='_imagens/{$dados['foto_esmalte']}' width='80px'/></div>      </td>
-                                  
-                </tr>";
+                    <td>
+                    <input type='checkbox'";
+                    if ($dados['usado'] == '1') {
+                        echo " checked";
+                    }
+                    echo " class = 'check' multiple value='{$dados['id_esmalte']}'> 
+                    </td>
+                                
+                    <td> {$dados['nome_esmalte']} </td>
+                    <td> {$dados['marca_esmalte']} </td>
+                    <td> {$dados['dt_entrada']} </td>
+                    
+                    <td> 
+                        <div class='imagem'>
+                            <img src='_imagens/{$dados['foto_esmalte']}' width='80px'/>
+                        </div>      
+                    </td>
+            
+            
+            
+                </div>              
+
+
+    </tr>";
     }
-    echo ("</table>");
+    echo "</table>";
     mysqli_close($conn);
 }
