@@ -83,45 +83,47 @@ function listarDados($conn)
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
 
-    echo ("<table> <tr><th>Excluir</th> <th>Usado</th> <th>Nome</th> <th>Marca</th> <th>Data</th> <th>Imagem</th></tr>");
+    echo ("<section> <article> Excluir Usado Nome Marca Data Imagem</article>");
     while ($dados = mysqli_fetch_assoc($query)) {
         if ($dados['dt_entrada'] == $tempo && $dados['usado'] == 0) {
-            echo " <tr class = 'novo'>";
+            echo " <article class = 'novo';>";
         } else {
-            echo "<tr class = 'usado'>";
+            echo "<article class = 'usado'>";
         }
         echo "  <div class='linha'>
         
-                    <td>
+                    <div class='btnProduto'>
                         <button type='button' class='btn btn-outline-danger modalExcluir' value='{$dados['id_esmalte']}' 
                         data-toggle='modal' data-target='#modalExcluir' name='{$dados['nome_esmalte']}'>Apagar</button>
-                    </td>
-                    
-                    <td>
+                    </div>
+
+                    <div class='checkProduto'>
                     <input type='checkbox'";
                     if ($dados['usado'] == '1') {
                         echo " checked";
                     }
                     echo " class = 'check' multiple value='{$dados['id_esmalte']}'> 
-                    </td>
-                                
-                    <td> {$dados['nome_esmalte']} </td>
-                    <td> {$dados['marca_esmalte']} </td>
-                    <td> {$dados['dt_entrada']} </td>
+                    </div>
+
+
+                    <div class='produto'>{$dados['nome_esmalte']}</div>            
+                     
+                    <div class='produto'> {$dados['marca_esmalte']} </div>      
+                    <div class='dataProduto'> {$dados['dt_entrada']} </div> 
                     
-                    <td> 
-                        <div class='imagem'>
-                            <img src='_imagens/{$dados['foto_esmalte']}' width='80px'/>
-                        </div>      
-                    </td>
+                     
+                        
+                            <img src='_imagens/{$dados['foto_esmalte']}' width='80px' class='imagemProduto img-responsive pull-right rounded-circle'/>
+                           
+                    
             
             
             
                 </div>              
 
 
-    </tr>";
+    </article>";
     }
-    echo "</table>";
+    echo "</section>";
     mysqli_close($conn);
 }
