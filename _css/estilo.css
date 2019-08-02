@@ -25,18 +25,21 @@ width: 50%;
 }
 
 .usado {
-	background-color:#9bb7db;
+	background-color:#8cf8b0;
 	border-radius: 50px;
 	
+}
+
+.comum {
+	background-color:#f8e48c;
+	border-radius: 50px;
 }
 
 .texto{
 	font-weight: 500;
 
 }
-.jumbotron{
-	height: 1px;
-}
+
 
 form{
     margin-bottom: 10pt;
@@ -75,4 +78,12 @@ form{
 	width: 10%;
 	max-height: 250px;
 	margin: 10px;
+  }
+
+img:hover {
+	-webkit-transform: scale(5);
+	-moz-transform: scale(5);
+	-o-transform: scale(5);
+	-ms-transform: scale(5);
+	transform: scale(5);
   }

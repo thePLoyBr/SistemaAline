@@ -1,6 +1,6 @@
 
 <?php
-
+date_default_timezone_set('America/Sao_Paulo');
 include 'conexao.php';
 if (isset($_POST['status'])) {
     listarDados($conn);
@@ -38,7 +38,7 @@ if (isset($_POST['status'])) {
 
         listarDados($conn);
     } elseif ($metodo == 'excluir') {
-        $id     = isset($_POST['id']) ? $_POST['id'] : " Nenhum ID ";
+        $id     = isset($_POST['id']) ? $_POST['id'] : " Nenhum ID "; //retornar só id
         $sql = mysqli_query($conn, "DELETE FROM tb_esmalte WHERE id_esmalte=$id");
         listarDados($conn);
     } elseif ($metodo == 'alterar') {
@@ -82,15 +82,16 @@ function listarDados($conn)
 {
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
-
-    echo ("<section> <article><div class='linha'> <div class='btnProduto'> <h6>Excluir</h6> </div> <div class='checkProduto'> Usado </div> <h6>Nome</h6> <h6>Marca</h6> <h6>Data</h6> <h6>Imagem</h6> </div> </article>");
+    echo "<section> <article><div class='linha'> <h6>Excluir</h6> Usado  <h6>Nome</h6> <h6>Marca</h6> <h6>Data</h6> <h6>Imagem</h6> </div> </article>";
     while ($dados = mysqli_fetch_assoc($query)) {
         if ($dados['dt_entrada'] == $tempo && $dados['usado'] == 0) {
             echo " <article class = 'novo';>";
-        } else {
+        } elseif ( $dados['dt_entrada'] != $tempo && $dados['usado'] == 0 ) {
+            echo "<article class = 'comum'>";
+        }else {
             echo "<article class = 'usado'>";
         }
-        echo "  <div class='linha'>
+        echo "  <div class='linha' name='{$dados['id_esmalte']}'>
         
                     <div class='btnProduto'>
 
@@ -109,8 +110,7 @@ function listarDados($conn)
 
                     <div class='produto texto'>{$dados['nome_esmalte']}</div>            
                      
-                    <div class='produto texto'> {$dados['marca_esmalte']} </div>      
-                    <div class='dataProduto'> {$dados['dt_entrada']} </div> 
+                    <div class='produto texto'> {$dados['marca_esmalte']} </div>
                     <img src='_imagens/{$dados['foto_esmalte']}' class='imagemProduto rounded-circle'/>
                            
                     
