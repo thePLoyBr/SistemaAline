@@ -27,22 +27,21 @@ function escutarExcluir(){
 		$('.corpoExcluir').html('<p> Deseja excluir o produto? </p> <p>'+ name +'</p>');
 
 		if($('#btnExcluir').click(function(){
-				$('#linha').val(id).hide();
+
+			$.ajax({
+				url: 'valida.php',
+				method: 'POST',
+				data: {
+					'id':id,
+					'metodo': 'excluir',
+				},
+				dataType: 'html'
+			}).done(function (resposta) {
+				$('#lista').html(resposta);
+				escutarCheckbox();
+				escutarExcluir();
+			});
 		}));
-			// $.ajax({
-			// 	url: 'valida.php',
-			// 	method: 'POST',
-			// 	data: {
-			// 		'id':id,
-			// 		'metodo': 'excluir',
-			// 	},
-			// 	dataType: 'html'
-			// }).done(function (resposta) {
-			// 	$('#lista').html(resposta);
-			// 	escutarCheckbox();
-			// 	escutarExcluir();
-			// });
-		
 
 		
 	
