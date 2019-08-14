@@ -1,89 +1,132 @@
-
-
-section {	
-width: 50%;
+section {
+  width: 50%;
 }
 
-
 .linha {
-	display: flex;
-	justify-content: space-around;
-	border-radius: 50px; 
-	margin: 10px;
-	min-height: 110px;
-	max-height: 110px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 50px;
+  margin: 10px;
+  min-height: 110px;
+  max-height: 110px;
 }
 
 .btn {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .novo {
-	background-color: #88bafc;
-	border-radius: 50px;
-	
+  background-color: #88bafc;
+  border-radius: 50px;
 }
 
 .usado {
-	background-color:#8cf8b0;
-	border-radius: 50px;
-	
+  background-color: #5d5e5d;
+  border-radius: 50px;
 }
 
 .comum {
-	background-color:#f8e48c;
-	border-radius: 50px;
+  background-color: #f8e48c;
+  border-radius: 50px;
 }
 
-.texto{
-	font-weight: 500;
-
+.texto {
+  font-weight: 500;
 }
 
-
-form{
-    margin-bottom: 10pt;
+form {
+  margin-bottom: 10pt;
 }
 
-.produto{
-	width: 20%;
-	line-height: 110px;
+.produto {
+  width: 20%;
+  line-height: 110px;
 }
 
-.checkProduto{
-	width: 2%;
-	line-height: 110px;
+.checkProduto {
+  width: 2%;
+  line-height: 110px;
 }
 
-.usadoProduto{
-	width: 2%;
-	line-height: 110px;
+.usadoProduto {
+  width: 2%;
+  line-height: 110px;
 }
 
-.dataProduto{
-	width: 10%;
-	line-height: 110px;
+.dataProduto {
+  width: 10%;
+  line-height: 110px;
 }
 
 .btnProduto {
-	width: 10%;
-	line-height: 90px;
-	margin-top: 0;
+  width: 10%;
+  line-height: 90px;
+  margin-top: 0;
 }
 
-
 .imagemProduto {
-	object-fit: fill; /* Do not scale the image */
-	object-position: center; /* Center the image within the element */
-	width: 10%;
-	max-height: 250px;
-	margin: 10px;
-  }
+  object-fit: fill; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  width: 10%;
+  max-height: 250px;
+  margin: 10px;
+}
 
 img:hover {
-	-webkit-transform: scale(5);
-	-moz-transform: scale(5);
-	-o-transform: scale(5);
-	-ms-transform: scale(5);
-	transform: scale(5);
-  }
+  -webkit-transform: scale(5);
+  -moz-transform: scale(5);
+  -o-transform: scale(5);
+  -ms-transform: scale(5);
+  transform: scale(5);
+}
+
+.antigo-legenda {
+  width: 20px;
+  height: 20px;
+  background: #f8e48c;
+  margin: 10px;
+  position: fixed;
+  bottom: 0px;
+}
+.legenda-antigo {
+  position: fixed;
+  bottom: 0px;
+  left: 40px;
+  line-height: 40px;
+}
+
+.novo-legenda {
+  width: 20px;
+  height: 20px;
+  background: #88bafc;
+  margin: 10px;
+  position: fixed;
+  bottom: 0px;
+  left: 130px;
+}
+.legenda-novo {
+  position: fixed;
+  bottom: 0px;
+  left: 170px;
+  line-height: 40px;
+}
+
+.usado-legenda {
+  width: 20px;
+  height: 20px;
+  background: #5d5e5d;
+  margin: 10px;
+  position: fixed;
+  bottom: 0px;
+  left: 260px;
+}
+.legenda-usado {
+  position: fixed;
+  bottom: 0px;
+  left: 300px;
+  line-height: 40px;
+}
+
+#legenda {
+  float: left;
+}
