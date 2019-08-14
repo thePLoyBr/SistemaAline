@@ -5,10 +5,7 @@ section {
 .linha {
   display: flex;
   justify-content: space-around;
-  border-radius: 50px;
-  margin: 10px;
-  min-height: 110px;
-  max-height: 110px;
+  margin: 10px;	
 }
 
 .btn {
@@ -73,11 +70,11 @@ form {
 }
 
 img:hover {
-  -webkit-transform: scale(5);
-  -moz-transform: scale(5);
-  -o-transform: scale(5);
-  -ms-transform: scale(5);
-  transform: scale(5);
+  -webkit-transform: scale(3);
+  -moz-transform: scale(3);
+  -o-transform: scale(3);
+  -ms-transform: scale(3);
+  transform: scale(3);
 }
 
 .antigo-legenda {
@@ -129,4 +126,8 @@ img:hover {
 
 #legenda {
   float: left;
+}
+
+h6{
+	text-indent: -20px;
 }
