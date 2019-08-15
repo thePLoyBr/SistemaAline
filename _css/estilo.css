@@ -131,3 +131,11 @@ img:hover {
 h6{
 	text-indent: -20px;
 }
+
+#legenda{
+	border: 1px solid gray;
+	width: 360px;
+	height: 60px;
+	position: fixed;
+	bottom: 0;
+}

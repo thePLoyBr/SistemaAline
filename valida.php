@@ -72,7 +72,7 @@ if (isset($_POST['status'])) {
     } elseif ($metodo == 'usado') {
 
         $id = isset($_POST['id']) ? $_POST['id'] : null;
-        mysqli_query($conn, "UPDATE tb_esmalte SET usado = if(usado=0,1,0) WHERE id_esmalte=$id");
+        mysqli_query($conn, "UPDATE tb_esmalte SET usado = if(usado=0,1,0), unico = '1' WHERE id_esmalte=$id");
         listarDados($conn);
     }
 }
@@ -82,11 +82,11 @@ function listarDados($conn)
 {
     $tempo = date('Y-m-d');
     $query = mysqli_query($conn, "SELECT * FROM tb_esmalte ORDER BY nome_esmalte ASC");
-    echo "<section> <article><div class='linha'> <h6>Excluir</h6> Usado  <h6>Nome</h6> <h6>Marca</h6> <h6>Data</h6> <h6>Imagem</h6> </div> </article>";
+    echo "<section> <article><div class='linha'> <h6>Excluir</h6> <h6>Usado</h6> <h6>Nome</h6> <h6>Marca</h6> <h6>Imagem</h6> </div> </article>";
     while ($dados = mysqli_fetch_assoc($query)) {
-        if ($dados['dt_entrada'] == $tempo && $dados['usado'] == 0) {
-            echo " <article class = 'novo';>";
-        } elseif ( $dados['dt_entrada'] != $tempo && $dados['usado'] == 0 ) {
+        if ($dados['unico'] == 0) {
+            echo " <article class = 'novo'>";
+        } elseif ( $dados['unico'] == 1 & $dados['usado'] == 0  ) {
             echo "<article class = 'comum'>";
         }else {
             echo "<article class = 'usado'>";
